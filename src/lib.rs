@@ -79,6 +79,11 @@ pub fn is(stream: Stream) -> bool {
     unsafe { msys_tty_on(fd) }
 }
 
+#[cfg(target_os = "redox")]
+pub fn is(stream: Stream) -> bool {
+    true
+}
+
 /// returns true if this is _not_ a tty
 pub fn isnt(stream: Stream) -> bool {
     !is(stream)
